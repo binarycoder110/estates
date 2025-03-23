@@ -292,7 +292,6 @@ Devvit.addCustomPostType({
             updatedState.players[buyerIndex].money -= property.price;
             updatedState.players[buyerIndex].properties.push(property.id.toString());
             property.owner = msg.data.playerId;
-            // updatedState.currentPlayer = (updatedState.currentPlayer + 1) % updatedState.players.length;
             await syncGameState(updatedState);
 
             await context.reddit.submitComment({
@@ -313,7 +312,6 @@ Devvit.addCustomPostType({
             property.rent.shift();
             property.rent.push(highestRent);
 
-            // updatedState.currentPlayer = (updatedState.currentPlayer + 1) % updatedState.players.length;
             await syncGameState(updatedState);
           }
           break;
@@ -325,7 +323,6 @@ Devvit.addCustomPostType({
           if (payerIndex !== -1 && ownerIndex !== -1) {
             updatedState.players[payerIndex].money -= msg.data.amount;
             updatedState.players[ownerIndex].money += msg.data.amount;
-            // updatedState.currentPlayer = (updatedState.currentPlayer + 1) % updatedState.players.length;
             await syncGameState(updatedState);
           }
           break;
